@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify</title>
+    <title>Spotify - Web Player: Bayaan for everyone</title>
     <link rel="stylesheet" href="./src/output.css">
     <style>
         
@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="library flex-grow bg-gray-900/70 rounded-xl p-4 m-2">
+            <div class="library flex-grow bg-gray-900/70 rounded-xl p-3 mt-4">
                 <div>
                     <div class="flex justify-between">
                         <p class="font-bold">Your library</p>
@@ -65,14 +65,14 @@
                             <p class="font-bold">Create your first playlist</p>
                             <p class="text-sm">it's easy we'll help you</p>
                             <button
-                                class="bg-white text-black font-bold w-2/3 rounded-lg py-1 px-3 mt-2 transform delay-100 duration-100 hover:scale-110">Create
+                                class="bg-white text-black font-bold w-2/3 rounded-lg py-1 px-3 mt-2 transform delay-100 duration-100 hover:scale-105">Create
                                 Playlist</button>
                         </div>
                         <div class="bg-gray-900 p-5 rounded-xl my-5">
                             <p class="font-bold">Create your first playlist</p>
                             <p class="text-sm">it's easy we'll help you</p>
                             <button
-                                class="bg-white text-black font-bold w-2/3 rounded-lg py-1 px-3 mt-2 transform delay-100 duration-100 hover:scale-110">Create
+                                class="bg-white text-black font-bold w-2/3 rounded-lg py-1 px-3 mt-2 transform delay-100 duration-100 hover:scale-105">Create
                                 Playlist</button>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
 
             </div>
         </div>
-        <div class="right  bg-gray-900/70  w-3/4 p-5 my-3 rounded-xl">
+        <div class="right relative bg-gray-900/70  w-3/4 p-5 my-3 rounded-xl">
             <div class="header flex justify-between py-2">
                 <div class="nav">
                     <div class="flex">
@@ -114,11 +114,13 @@
 
                 </div>
                 <div class="button space-x-3">
+                    
                     <button
-                        class="login bg-white text-gray-700 hover:text-black font-semibold px-4 py-1 rounded-full">Login</button>
-                    <button
-                        class="signin bg-white text-gray-700 hover:text-black font-semibold px-4 py-1 rounded-full">Sign
+                        class="signin bg-gray-900/70 transform delay-100 duration-100 hover:scale-105 text-gray-500 hover:text-white font-semibold px-4 py-1 rounded-full">Sign
                         Up</button>
+                    <button
+                        class="login bg-white text-gray-700 transform delay-100 duration-100 hover:scale-105 hover:text-black font-semibold px-4 py-1 rounded-full">Log in</button>
+                    
                 </div>
             </div>
             <div class="spotify-playlist">
@@ -153,51 +155,19 @@
                                     fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
                             </svg>
                         </div>
+                    </div> 
+                </div>
+                <div class="playbar absolute bottom-0 w-full" style="background-color: rgb(40, 131, 40);">
+                    <div class="songinfo">
+                        
                     </div>
-                    <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
-                        <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
-                            class="w-full rounded-lg">
-                        <h2 class="font-semibold pt-2 pb-1">Happy Hits!</h2>
-                        <p class="text-xs">Hits to boost your mood and fill you with happiness!</p>
-                        <div
-                            class="absolute w-min bottom-10 right-7 transform transition-all duration-300 delay-100 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:-translate-y-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
-                                <circle cx="12" cy="12" r="12" fill="#58D68D" />
-                                <path
-                                    d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-                                    fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
-                            </svg>
-                        </div>
+                    <div class="songbuttons flex justify-center space-x-4 py-3">
+                        <img src="previous.svg" alt="previous logo">
+                        <img src="play.svg" alt="paly logo">
+                        <img src="next.svg" alt="next logo">
                     </div>
-                    <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
-                        <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
-                            class="w-full rounded-lg">
-                        <h2 class="font-semibold pt-2 pb-1">Happy Hits!</h2>
-                        <p class="text-xs">Hits to boost your mood and fill you with happiness!</p>
-                        <div
-                            class="absolute w-min bottom-10 right-7 transform transition-all duration-300 delay-100 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:-translate-y-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
-                                <circle cx="12" cy="12" r="12" fill="#58D68D" />
-                                <path
-                                    d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-                                    fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
-                        <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
-                            class="w-full rounded-lg">
-                        <h2 class="font-semibold pt-2 pb-1">Happy Hits!</h2>
-                        <p class="text-xs">Hits to boost your mood and fill you with happiness!</p>
-                        <div
-                            class="absolute w-min bottom-10 right-7 transform transition-all duration-300 delay-100 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:-translate-y-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
-                                <circle cx="12" cy="12" r="12" fill="#58D68D" />
-                                <path
-                                    d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-                                    fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
-                            </svg>
-                        </div>
+                    <div class="songtime">
+
                     </div>
                 </div>
             </div>
