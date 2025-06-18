@@ -7,38 +7,40 @@
     <title>Spotify - Web Player: Bayaan for everyone</title>
     <link rel="stylesheet" href="./src/output.css">
     <style>
-        
-/* Scrollbar Styles */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
 
-::-webkit-scrollbar-track {
-  background: #1f2937;  /* Gray-800 */
-  border-radius: 9999px;
-}
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+            /* Gray-800 */
+            border-radius: 9999px;
+        }
 
-::-webkit-scrollbar-thumb {
-  background: #4b5563;  /* Gray-600 */
-  border-radius: 9999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            /* Gray-600 */
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;  /* Gray-500 */
-}
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+            /* Gray-500 */
+        }
 
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
     </style>
 </head>
 
 <body class="bg-black text-white font-roboto">
     <div class="contianer h-screen flex">
-        <div class="left flex flex-col w-1/4 p-3">
+        <div class="left flex flex-col w-1/4 pl-3 py-3">
             <div class="home bg-gray-900/70 rounded-xl p-10">
                 <div class="logo flex pb-2">
                     <img src="logo.svg" alt="Logo" class="invert-100 pr-3">
@@ -54,13 +56,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="library flex-grow bg-gray-900/70 rounded-xl p-3 mt-4">
+            <div class="library flex-grow bg-gray-900/70 rounded-xl p-3 mt-4 relative">
                 <div>
                     <div class="flex justify-between">
-                        <p class="font-bold">Your library</p>
+                        <p class="font-bold text-xl">Your library</p>
                         <img src="plus.svg" alt="plussymbol" class="invert-100 w-4">
                     </div>
-                    <div class="">
+                    <div class="songlist h-[50vh] w-[21.98vw] overflow-y-auto">
+                        <ul class="py-2">
+                            
+                        </ul>
+                        
+                    </div>
+                    <!-- <div class="">
                         <div class="bg-gray-900 p-5 rounded-xl my-5">
                             <p class="font-bold">Create your first playlist</p>
                             <p class="text-sm">it's easy we'll help you</p>
@@ -74,29 +82,31 @@
                             <button
                                 class="bg-white text-black font-bold w-2/3 rounded-lg py-1 px-3 mt-2 transform delay-100 duration-100 hover:scale-105">Create
                                 Playlist</button>
+                        </div>
+                    </div> -->
+                    <div class="footermain absolute bottom-5 w-full">
+                        <div class="footer text-gray-500 text-xs mt-5">
+                            <a href="#" class="pr-3 inline">Legal</a>
+                            <a href="#" class="pr-3 inline"><span>Safety&Privacy Center</span></a>
+                            <a href="#" class="pr-3 inline"><span>Privacy Policy</span></a>
+                            <a href="#" class="pr-3 inline">Cookies</a>
+                            <a href="#" class="pr-3 inline">About Adds</a>
+                            <a href="#" class="pr-3 inline">Accessibility</a>
+                            </ul>
+                        </div>
+                        <div class="mt-5">
+                            <div class="border-2 border-white flex w-1/2 rounded-full px-3 py-1">
+                                <img src="earth.svg" alt="global logo" class="w-4 invert-100 font-bold">
+                                <p class="pl-5 font-bold">English</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="footer text-gray-500 text-xs mt-14">
-                        <a href="#" class="pr-3 inline">Legal</a>
-                        <a href="#" class="pr-3 inline"><span>Safety&Privacy Center</span></a>
-                        <a href="#" class="pr-3 inline"><span>Privacy Policy</span></a>
-                        <a href="#" class="pr-3 inline">Cookies</a>
-                        <a href="#" class="pr-3 inline">About Adds</a>
-                        <a href="#" class="pr-3 inline">Accessibility</a>
-                        </ul>
-                    </div>
-                    <div class="mt-5">
-                        <div class="border-2 border-white flex w-1/2 rounded-full px-3 py-1">
-                            <img src="earth.svg" alt="global logo" class="w-4 invert-100 font-bold">
-                            <p class="pl-5 font-bold">English</p>
-                        </div>
-                    </div>
                 </div>
 
             </div>
         </div>
-        <div class="right relative bg-gray-900/70  w-3/4 p-5 my-3 rounded-xl">
+        <div class="right relative bg-gray-900/70  w-3/4 p-5 m-3 rounded-lg">
             <div class="header flex justify-between py-2">
                 <div class="nav">
                     <div class="flex">
@@ -114,18 +124,19 @@
 
                 </div>
                 <div class="button space-x-3">
-                    
+
                     <button
                         class="signin bg-gray-900/70 transform delay-100 duration-100 hover:scale-105 text-gray-500 hover:text-white font-semibold px-4 py-1 rounded-full">Sign
                         Up</button>
                     <button
-                        class="login bg-white text-gray-700 transform delay-100 duration-100 hover:scale-105 hover:text-black font-semibold px-4 py-1 rounded-full">Log in</button>
-                    
+                        class="login bg-white text-gray-700 transform delay-100 duration-100 hover:scale-105 hover:text-black font-semibold px-4 py-1 rounded-full">Log
+                        in</button>
+
                 </div>
             </div>
             <div class="spotify-playlist">
                 <h1 class="text-2xl font-bold">Spotify Playlist</h1>
-                <div class="cardcontainer overflow-y-scroll max-h-[70vh] flex flex-wrap">
+                <div class="cardcontainer overflow-y-auto max-h-[70vh] flex flex-wrap">
                     <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
                         <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
                             class="w-full rounded-lg">
@@ -155,11 +166,11 @@
                                     fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
                             </svg>
                         </div>
-                    </div> 
+                    </div>
                 </div>
-                <div class="playbar absolute bottom-0 w-full" style="background-color: rgb(40, 131, 40);">
+                <div class="playbar absolute bottom-5 w-[70vw] rounded-lg" style="background-color: rgb(40, 131, 40);">
                     <div class="songinfo">
-                        
+
                     </div>
                     <div class="songbuttons flex justify-center space-x-4 py-3">
                         <img src="previous.svg" alt="previous logo">
