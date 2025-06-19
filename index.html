@@ -35,6 +35,9 @@
         ::-webkit-scrollbar-corner {
             background: transparent;
         }
+        .circle{
+            transition: left 0.5s;
+        }
     </style>
 </head>
 
@@ -64,9 +67,9 @@
                     </div>
                     <div class="songlist h-[50vh] w-[21.98vw] overflow-y-auto">
                         <ul class="py-2">
-                            
+
                         </ul>
-                        
+
                     </div>
                     <!-- <div class="">
                         <div class="bg-gray-900 p-5 rounded-xl my-5">
@@ -84,7 +87,7 @@
                                 Playlist</button>
                         </div>
                     </div> -->
-                    <div class="footermain absolute bottom-5 w-full">
+                    <div class="footermain absolute bottom-5">
                         <div class="footer text-gray-500 text-xs mt-5">
                             <a href="#" class="pr-3 inline">Legal</a>
                             <a href="#" class="pr-3 inline"><span>Safety&Privacy Center</span></a>
@@ -168,11 +171,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="playbar absolute bottom-5 w-[70vw] rounded-lg" style="background-color: rgb(40, 131, 40);">
+                <div class="playbar absolute bottom-5 w-[71.2vw] rounded-lg"
+                    style="background-color: rgb(40, 131, 40);">
+                    <div class="absolute seekbar left-14 w-[90%] border-t-2 top-7 rounded-full border-black">
+                        <div class="circle h-2 w-2 rounded-full bg-white left-[0%] absolute bottom-[-2px]">
+                        </div>
+                    </div>
                     <div class="songinfo">
 
                     </div>
-                    <div class="songbuttons flex justify-center space-x-4 py-3">
+                    <div class="songbuttons flex justify-center space-x-4 pt-10 pb-3">
                         <img src="previous.svg" alt="previous logo">
                         <img src="play.svg" alt="paly logo">
                         <img src="next.svg" alt="next logo">
