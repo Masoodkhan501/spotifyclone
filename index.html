@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify - Web Player: Bayaan for everyone</title>
+    <title>Spotify - Web Player</title>
     <link rel="stylesheet" href="./src/output.css">
     <style>
         /* Scrollbar Styles */
@@ -35,7 +35,8 @@
         ::-webkit-scrollbar-corner {
             background: transparent;
         }
-        .circle{
+
+        .circle {
             transition: left 0.5s;
         }
     </style>
@@ -43,7 +44,7 @@
 
 <body class="bg-black text-white font-roboto">
     <div class="contianer h-screen flex">
-        <div class="left flex flex-col w-1/4 pl-3 py-3">
+        <div class="left absolute -left-[100%] md:flex md:flex-col md:relative md:left-0 md:z-10 md:w-1/4 md:pl-3 md:py-3">
             <div class="home bg-gray-900/70 rounded-xl p-10">
                 <div class="logo flex pb-2">
                     <img src="logo.svg" alt="Logo" class="invert-100 pr-3">
@@ -59,14 +60,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="library flex-grow bg-gray-900/70 rounded-xl p-3 mt-4 relative">
+            <div class="library flex-grow bg-gray-900/70 rounded-xl p-3 mt-4 md:relative">
                 <div>
                     <div class="flex justify-between">
                         <p class="font-bold text-xl">Your library</p>
                         <img src="plus.svg" alt="plussymbol" class="invert-100 w-4">
                     </div>
                     <div class="songlist h-[50vh] w-[21.98vw] overflow-y-auto">
-                        <ul class="py-2">
+                        <ul class="py-2 ">
 
                         </ul>
 
@@ -87,7 +88,7 @@
                                 Playlist</button>
                         </div>
                     </div> -->
-                    <div class="footermain absolute bottom-5">
+                    <div class="footermain ">
                         <div class="footer text-gray-500 text-xs mt-5">
                             <a href="#" class="pr-3 inline">Legal</a>
                             <a href="#" class="pr-3 inline"><span>Safety&Privacy Center</span></a>
@@ -98,9 +99,9 @@
                             </ul>
                         </div>
                         <div class="mt-5">
-                            <div class="border-2 border-white flex w-1/2 rounded-full px-3 py-1">
-                                <img src="earth.svg" alt="global logo" class="w-4 invert-100 font-bold">
-                                <p class="pl-5 font-bold">English</p>
+                            <div class="border-2 hidden sm:flex border-white w-1/2 rounded-full lg:px-3  py-1">
+                                <img src="earth.svg" alt="global logo" class="w-4 invert-100 font-bold hidden lg:inline">
+                                <p class="lg:pl-5 md:pl-3 font-bold">English</p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +110,7 @@
 
             </div>
         </div>
-        <div class="right relative bg-gray-900/70  w-3/4 p-5 m-3 rounded-lg">
+        <div class="right relative bg-gray-900/70 w-full  md:w-3/4 p-5 m-3 rounded-lg">
             <div class="header flex justify-between py-2">
                 <div class="nav">
                     <div class="flex">
@@ -139,11 +140,11 @@
             </div>
             <div class="spotify-playlist">
                 <h1 class="text-2xl font-bold">Spotify Playlist</h1>
-                <div class="cardcontainer overflow-y-auto max-h-[70vh] flex flex-wrap">
-                    <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
+                <div class="cardcontainer w-full overflow-y-auto max-h-[70vh] flex flex-wrap">
+                    <div class="card md:w-52 w-36 px-5 py-3 bg-gray-900 mt-5 mr-2 rounded-lg relative group">
                         <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
                             class="w-full rounded-lg">
-                        <h2 class="font-semibold pt-2 pb-1">Happy Hits!</h2>
+                        <h2 class="font-semibold md:text-lg pt-2 pb-1 text-sm">Happy Hits!</h2>
                         <p class="text-xs">Hits to boost your mood and fill you with happiness!</p>
                         <div
                             class="absolute w-min bottom-10 right-7 transform transition-all duration-300 delay-100 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:-translate-y-12">
@@ -155,7 +156,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="card w-52 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
+                    <div class="card md:w-52 w-36 px-5 py-3 bg-gray-900 mt-5 rounded-lg relative group">
                         <img src="https://i.scdn.co/image/ab67616d00001e026fbb60d6a7e03ccb940a518e" alt="photo"
                             class="w-full rounded-lg">
                         <h2 class="font-semibold pt-2 pb-1">Happy Hits!</h2>
@@ -171,23 +172,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="playbar absolute bottom-5 w-[71.2vw] rounded-lg"
+                <div class="playbar absolute bottom-5 w-[82.5vw]  md:w-[68vw] lg:w-[71.2vw] rounded-lg"
                     style="background-color: rgb(40, 131, 40);">
-                    <div class="absolute seekbar left-14 w-[90%] border-t-2 top-7 rounded-full border-black">
-                        <div class="circle h-2 w-2 rounded-full bg-white left-[0%] absolute bottom-[-2px]">
+                    <div>
+                        <div class="songinfo text-black pt-1 flex items-baseline justify-center">
+                            <p class="text-sm sm:text-lg sm:font-bold">-</p>
+                            <span class="sm:text-sm text-xs"> - </span>
                         </div>
-                    </div>
-                    <div class="songinfo">
+                        <div class="flex w-full space-x-2 px-1 sm:px-5 text-black">
+                            <div class="songtime">
+                                00:00
+                            </div>
+                            <div class="cursor-pointer relative seekbar border-t-2 top-[1.3vh] border-black w-full">
+                                <div class="circle h-2 w-2 absolute rounded-full -top-[0.7vh] bg-white left-[0%]">
+                                </div>
+                            </div>
+                            <div class="songtimetotal">
+                                00:00
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="songbuttons flex justify-center space-x-4 pt-10 pb-3">
-                        <img src="previous.svg" alt="previous logo">
-                        <img src="play.svg" alt="paly logo">
-                        <img src="next.svg" alt="next logo">
-                    </div>
-                    <div class="songtime">
+
+                    <div class="sm:pt-3 pb-3 px-16 text-black    ">
+
+                        <div class="songbuttons flex justify-center space-x-4 cursor-pointer">
+                            <img src="previous.svg" alt="previous logo" id="previous">
+                            <img src="play.svg" alt="paly logo" id="play">
+                            <img src="next.svg" alt="next logo" id="next">
+                        </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
