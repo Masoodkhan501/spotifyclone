@@ -19,7 +19,7 @@ async function getSongs(folder) {
     for (const song of songs) {
         songul.innerHTML += `<li class="flex justify-between px-1 mb-2 cursor-pointer">
         <div class="flex">
-            <img src="music.svg" alt="music logo" class="invert-100 pr-3"/>
+            <img src="svgs/music.svg" alt="music logo" class="invert-100 pr-3"/>
             <div class="info">               
                 <p calss="text-sm">${song.replaceAll("%20", " ").split("-")[0]}</p>
                 <p class="text-xs">${song.replaceAll("%20", " ").split("-")[1].split(".")[0]}</p>
@@ -27,7 +27,7 @@ async function getSongs(folder) {
         </div>
         <div class="flex items-center group">
             <p class="text-xs hidden group-hover:inline pr-1">Play Now</p>
-            <img src="playNow.svg" alt="play logo">
+            <img src="svgs/playNow.svg" alt="play logo">
         </div>
         </li>`;
     }
@@ -166,17 +166,17 @@ async function main() {
         let index = songs.indexOf(currentsong.src.split("/").splice(-1)[0]);
         if (index == 0 && songs[index].replaceAll("%20", " ").split("-")[0].trim() == "Wind") {
             playMusic(currfolder, "Wind-Up Mountains", "Schwartzy");
-            play.src = "pause.svg";
+            play.src = "svgs/pause.svg";
         }
         else if (index == 0) {
             playMusic(currfolder, songs[songs.length - 1].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[songs.length - 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "pause.svg";
+            play.src = "svgs/pause.svg";
         }
         else {
             playMusic(currfolder, songs[index - 1].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[index - 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "pause.svg";
+            play.src = "svgs/pause.svg";
         }
     })
 
@@ -186,16 +186,16 @@ async function main() {
         if (index + 1 >= songs.length) {
             playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "pause.svg"
+            play.src = "svgs/pause.svg"
         }
         else if (index == songs.length - 2 && songs[index].replaceAll("%20", " ").split("-")[0].trim() == "Wind") {
             playMusic(currfolder, "Wind-Up Mountains", "Schwartzy")
-            play.src = "pause.svg";
+            play.src = "svgs/pause.svg";
         }
         else {
             playMusic(currfolder, songs[index + 1].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[index + 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "pause.svg";
+            play.src = "svgs/pause.svg";
         }
     })
 
@@ -209,13 +209,15 @@ async function main() {
     {
         if(document.querySelector(".volicon").src.includes("volume.svg"))
         {
-            document.querySelector(".volicon").src="mute.svg"
+            document.querySelector(".volicon").src="svgs/mute.svg"
             currentsong.volume=0;
+            document.querySelector(".volume-slider").value = currentsong.volume * 100;
         }
         else
         {
-            document.querySelector(".volicon").src="volume.svg"
+            document.querySelector(".volicon").src="svgs/volume.svg"
             currentsong.volume=0.50;
+            document.querySelector(".volume-slider").value = currentsong.volume * 100;
         }
     })
 
@@ -233,7 +235,7 @@ async function main() {
             songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
             playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim(), true);
-            play.src = "play.svg";
+            play.src = "svgs/play.svg";
         })
     })
 }
