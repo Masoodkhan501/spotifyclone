@@ -205,6 +205,20 @@ async function main() {
         document.querySelector(".vol").classList.toggle("hidden")
     })
 
+    document.querySelector(".volicon").addEventListener("dblclick",()=>
+    {
+        if(document.querySelector(".volicon").src.includes("volume.svg"))
+        {
+            document.querySelector(".volicon").src="mute.svg"
+            currentsong.volume=0;
+        }
+        else
+        {
+            document.querySelector(".volicon").src="volume.svg"
+            currentsong.volume=0.50;
+        }
+    })
+
     //vol slider
     document.querySelector(".volume-slider").addEventListener("input", (e) => {
         const volume = parseInt(e.target.value) / 100;
