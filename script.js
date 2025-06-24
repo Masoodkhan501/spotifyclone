@@ -80,21 +80,17 @@ const playMusic = (folder, song_name, song_by, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`songs/`);
-    let response = await a.text();
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let allachors = div.getElementsByTagName("a");
-    let cardContainer = document.querySelector(".cardcontainer")
-    let array = Array.from(allachors)
+    let a = await fetch(`songs/albums.json`);
+    let response = await a.json();
+    let array =Array.from(response);
     for(let index=0; index < array.length;index++)
     {
         const e = array[index];
-        if (e.href.includes("/songs/")) {
-            let folder = e.href.split("/")[4];
-            let a = await fetch(`songs/${folder}/info.json`);
-            let response = await a.json();
-            cardContainer.innerHTML += `
+        let folder = e.folders;
+        let a = await fetch(`songs/${folder}/info.json`);
+        let response = await a.json();
+        let cardContainer= document.querySelector(".cardcontainer")
+        cardContainer.innerHTML += `
                 <div data-folder=${folder}
                     class="card md:w-52 w-36 md:px-5 px-3 py-3 bg-gray-900 mt-5 mr-1 md:mr-2 rounded-lg relative group">
                     <div
@@ -111,7 +107,6 @@ async function displayAlbums() {
                     <h2 class="font-semibold md:text-lg pt-2 pb-1 text-sm">${response.title}</h2>
                     <p class="text-xs">${response.description}</p>
                 </div>`
-        }
     }
 }
 
@@ -164,9 +159,7 @@ async function main() {
     //add an event listner to next
     next.addEventListener("click", () => {
         let playingsong =  decodeURIComponent(currentsong.src.split("/").pop().split(".")[0])
-        console.log(playingsong)
         let index = songs.indexOf(playingsong);
-        console.log(index)
         let newIndex = index == songs.length-1? index=0 : index+1;
         playMusic(currfolder,songs[newIndex].split("-")[0].trim(),songs[newIndex].split("-")[1].trim());
         play.src = "svgs/pause.svg"
