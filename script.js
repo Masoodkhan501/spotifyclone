@@ -4,7 +4,6 @@ async function getSongs(folder) {
     currfolder = folder;
     let a = await fetch(`${currfolder}/info.json`);
     let response = await a.json();
-    console.log(response)
     let as = response.songs;
     let songs = [];
     for (let index = 0; index < as.length; index++) {
