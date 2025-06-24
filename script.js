@@ -4,8 +4,7 @@ async function getSongs(folder) {
     currfolder = folder;
     let a = await fetch(`${currfolder}/info.json`);
     let response = await a.json();
-    let div = document.createElement("div");
-    div.innerHTML = response;
+    console.log(response)
     let as = response.songs;
     let songs = [];
     for (let index = 0; index < as.length; index++) {
@@ -102,7 +101,7 @@ async function displayAlbums() {
                                 fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
                         </svg>
                     </div>
-                    <img src="/songs/${folder}/coverimg.jpg" alt="photo"
+                    <img src="songs/${folder}/${e.cover}" alt="photo"
                         class="w-full h-40 object-contain object-center rounded-lg">
                     <h2 class="font-semibold md:text-lg pt-2 pb-1 text-sm">${response.title}</h2>
                     <p class="text-xs">${response.description}</p>

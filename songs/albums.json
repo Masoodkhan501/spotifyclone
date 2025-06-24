@@ -1,5 +1,5 @@
 [
-    {"folders":"cs"},
-    {"folders":"funks"},
-    {"folders":"ncs"}
+    {"folders":"cs","cover":"coverimg.jpg"},
+    {"folders":"funks","cover":"coverimg.jpg"},
+    {"folders":"ncs","cover":"coverimg.jpg"}
 ]
