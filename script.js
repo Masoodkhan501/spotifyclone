@@ -2,7 +2,7 @@ let currentsong = new Audio();
 let currfolder;
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${currfolder}/`);
+    let a = await fetch(`${currfolder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -124,7 +124,7 @@ async function displayAlbums() {
 }
 
 async function main() {
-    currfolder = "/songs/cs"
+    currfolder = "songs/cs"
     await getSongs(currfolder);
     // console.log(songs)
     playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
@@ -137,12 +137,12 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentsong.paused) {
             currentsong.play();
-            play.src = "pause.svg"
+            play.src = "svgs/pause.svg"
 
         }
         else {
             currentsong.pause();
-            play.src = "play.svg"
+            play.src = "svgs/play.svg"
         }
     })
 
