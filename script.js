@@ -90,7 +90,7 @@ async function displayAlbums() {
         let cardContainer= document.querySelector(".cardcontainer")
         cardContainer.innerHTML += `
                 <div data-folder=${folder}
-                    class="card md:w-52 w-36 md:px-5 px-3 py-3 bg-gray-900 mt-5 mr-1 md:mr-2 rounded-lg relative group">
+                    class="card md:w-52 w-32 md:px-5 px-3 py-3 bg-gray-900 mt-5 mr-2 rounded-lg relative group">
                     <div
                         class="absolute w-min top-3 opacity-0 right-7 transform transition-all duration-300 delay-100 group-hover:opacity-100 group-hover:translate-y-32">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
