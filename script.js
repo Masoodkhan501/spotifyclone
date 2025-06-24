@@ -2,17 +2,14 @@ let currentsong = new Audio();
 let currfolder;
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(`${currfolder}`);
-    let response = await a.text();
+    let a = await fetch(`${currfolder}/info.json`);
+    let response = await a.json();
     let div = document.createElement("div");
     div.innerHTML = response;
-    let as = div.getElementsByTagName("a");
-    songs = [];
+    let as = response.songs;
+    let songs = [];
     for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${currfolder}/`)[1])
-        }
+        songs.push(as[index].split(".mp3")[0])
     }
     let songul = document.querySelector(".songlist").getElementsByTagName("ul")[0];
     songul.innerHTML = "";
@@ -22,7 +19,7 @@ async function getSongs(folder) {
             <img src="svgs/music.svg" alt="music logo" class="invert-100 pr-3"/>
             <div class="info">               
                 <p calss="text-sm">${song.replaceAll("%20", " ").split("-")[0]}</p>
-                <p class="text-xs">${song.replaceAll("%20", " ").split("-")[1].split(".")[0]}</p>
+                <p class="text-xs">${song.replaceAll("%20", " ").split("-")[1]}</p>
             </div>
         </div>
         <div class="flex items-center group">
@@ -36,13 +33,8 @@ async function getSongs(folder) {
     //attach a event listener
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(element => {
         element.addEventListener("click", e => {
-            play.src = "pause.svg"
-            if (e.currentTarget.querySelector(".info").firstElementChild.innerHTML.trim() == "Wind") {
-                playMusic("/songs/ncs/", "Wind-Up Mountains", "Schwartzy")
-            }
-            else {
-                playMusic(currfolder, e.currentTarget.querySelector(".info").firstElementChild.innerHTML.trim(), e.currentTarget.querySelector(".info").lastElementChild.innerHTML.trim());
-            }
+            play.src = "svgs/pause.svg"
+            playMusic(currfolder, e.currentTarget.querySelector(".info").firstElementChild.innerHTML.trim(), e.currentTarget.querySelector(".info").lastElementChild.innerHTML.trim());
         })
     });
     return songs;
@@ -114,7 +106,7 @@ async function displayAlbums() {
                                 fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
                         </svg>
                     </div>
-                    <img src="songs/${folder}/coverimg.jpg" alt="photo"
+                    <img src="/songs/${folder}/coverimg.jpg" alt="photo"
                         class="w-full h-40 object-contain object-center rounded-lg">
                     <h2 class="font-semibold md:text-lg pt-2 pb-1 text-sm">${response.title}</h2>
                     <p class="text-xs">${response.description}</p>
@@ -124,10 +116,11 @@ async function displayAlbums() {
 }
 
 async function main() {
-    currfolder = "songs/cs"
-    let songs =  await getSongs(currfolder);
+    currfolder = "songs/cs/";
+    let songs = await getSongs(currfolder);
+    // console.log(songs)
     playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
-        songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim(), true)
+        songs[0].replaceAll("%20", " ").split("-")[1].trim(), true)
 
     //Display all the albums on the page
     await displayAlbums();
@@ -159,35 +152,24 @@ async function main() {
         document.querySelector(".circle").style.left = percent + "%";
         currentsong.currentTime = ((currentsong.duration) * percent) / 100;
     })
-
     //Add an event listner to pervious
     previous.addEventListener("click", () => {
-        let index = songs.indexOf(currentsong.src.split("/").splice(-1)[0]);
-        if (index == 0) {
-            playMusic(currfolder, songs[songs.length - 1].replaceAll("%20", " ").split("-")[0].trim(),
-                songs[songs.length - 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "svgs/pause.svg";
-        }
-        else {
-            playMusic(currfolder, songs[index - 1].replaceAll("%20", " ").split("-")[0].trim(),
-                songs[index - 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "svgs/pause.svg";
-        }
+        let playingsong =decodeURIComponent(currentsong.src.split("/").pop().split(".")[0])
+        let index = songs.indexOf(playingsong);
+        let newIndex = index == 0 ? songs.length - 1 : index - 1;
+        playMusic(currfolder,songs[newIndex].split("-")[0].trim(),songs[newIndex].split("-")[1].trim());
+        play.src = "svgs/pause.svg"
     })
 
     //add an event listner to next
     next.addEventListener("click", () => {
-        let index = songs.indexOf(currentsong.src.split("/").splice(-1)[0]);
-        if (index + 1 >= songs.length) {
-            playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
-                songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "svgs/pause.svg"
-        }
-        else {
-            playMusic(currfolder, songs[index + 1].replaceAll("%20", " ").split("-")[0].trim(),
-                songs[index + 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
-            play.src = "svgs/pause.svg";
-        }
+        let playingsong =  decodeURIComponent(currentsong.src.split("/").pop().split(".")[0])
+        console.log(playingsong)
+        let index = songs.indexOf(playingsong);
+        console.log(index)
+        let newIndex = index == songs.length-1? index=0 : index+1;
+        playMusic(currfolder,songs[newIndex].split("-")[0].trim(),songs[newIndex].split("-")[1].trim());
+        play.src = "svgs/pause.svg"
     })
 
 

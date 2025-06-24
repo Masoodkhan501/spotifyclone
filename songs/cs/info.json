@@ -1,4 +1,10 @@
 {
     "title" : "Refreshment",
-    "description": "Your playlist Description"
+    "description": "Your playlist Description",
+    "songs":[
+        "7 years old - lukas Graham.mp3",
+        "Aku Sayang - Sprinter.mp3",
+        "set fire to the rain - Adele.mp3",
+        "summertime sadness - Lana Del Rey.mp3"
+    ]
 }
