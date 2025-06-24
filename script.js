@@ -2,7 +2,7 @@ let currentsong = new Audio();
 let currfolder;
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(`${currfolder}/`);
+    let a = await fetch(`${currfolder}`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -88,7 +88,7 @@ const playMusic = (folder, song_name, song_by, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`/songs/`);
+    let a = await fetch(`songs/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -100,7 +100,7 @@ async function displayAlbums() {
         const e = array[index];
         if (e.href.includes("/songs/")) {
             let folder = e.href.split("/")[4];
-            let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
+            let a = await fetch(`songs/${folder}/info.json`);
             let response = await a.json();
             cardContainer.innerHTML += `
                 <div data-folder=${folder}
@@ -114,7 +114,7 @@ async function displayAlbums() {
                                 fill="#000000" transform="translate(12, 12) scale(0.7) translate(-12, -12)" />
                         </svg>
                     </div>
-                    <img src="/songs/${folder}/coverimg.jpg" alt="photo"
+                    <img src="songs/${folder}/coverimg.jpg" alt="photo"
                         class="w-full h-40 object-contain object-center rounded-lg">
                     <h2 class="font-semibold md:text-lg pt-2 pb-1 text-sm">${response.title}</h2>
                     <p class="text-xs">${response.description}</p>
@@ -125,8 +125,7 @@ async function displayAlbums() {
 
 async function main() {
     currfolder = "songs/cs"
-    await getSongs(currfolder);
-    // console.log(songs)
+    let songs =  await getSongs(currfolder);
     playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
         songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim(), true)
 
@@ -164,11 +163,7 @@ async function main() {
     //Add an event listner to pervious
     previous.addEventListener("click", () => {
         let index = songs.indexOf(currentsong.src.split("/").splice(-1)[0]);
-        if (index == 0 && songs[index].replaceAll("%20", " ").split("-")[0].trim() == "Wind") {
-            playMusic(currfolder, "Wind-Up Mountains", "Schwartzy");
-            play.src = "svgs/pause.svg";
-        }
-        else if (index == 0) {
+        if (index == 0) {
             playMusic(currfolder, songs[songs.length - 1].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[songs.length - 1].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
             play.src = "svgs/pause.svg";
@@ -187,10 +182,6 @@ async function main() {
             playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim());
             play.src = "svgs/pause.svg"
-        }
-        else if (index == songs.length - 2 && songs[index].replaceAll("%20", " ").split("-")[0].trim() == "Wind") {
-            playMusic(currfolder, "Wind-Up Mountains", "Schwartzy")
-            play.src = "svgs/pause.svg";
         }
         else {
             playMusic(currfolder, songs[index + 1].replaceAll("%20", " ").split("-")[0].trim(),
@@ -231,7 +222,7 @@ async function main() {
     //pull the folder
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
-            currfolder = `/songs/${item.currentTarget.dataset.folder}/`
+            currfolder = `songs/${item.currentTarget.dataset.folder}/`
             songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
             playMusic(currfolder, songs[0].replaceAll("%20", " ").split("-")[0].trim(),
                 songs[0].replaceAll("%20", " ").split("-")[1].split(".")[0].trim(), true);
